@@ -1,4 +1,5 @@
 require_relative "main/board"
+require_relative "main/player"
 require_relative "main/piece"
 require_relative "main/piece/king"
 

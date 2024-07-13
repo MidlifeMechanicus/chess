@@ -1,4 +1,4 @@
-# Tests behaviour of King
+# Tests behaviour of King.
 require "./lib/main/piece/king"
 
 describe King do

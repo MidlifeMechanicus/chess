@@ -1,4 +1,4 @@
-# Tests behaviour of Piece
+# Tests behaviour of Piece.
 require "./lib/main/piece"
 
 describe Piece do
