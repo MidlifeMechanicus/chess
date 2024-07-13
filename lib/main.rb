@@ -1,4 +1,5 @@
 require_relative "main/board"
+require_relative "main/piece"
 
 # We will need a game_board that has pieces as attributes so it can track them.
 # We will need a peiece class, and subclasses.
