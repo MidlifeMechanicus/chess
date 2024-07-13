@@ -1,10 +1,11 @@
 # Creates chess pieces.
 
 class Piece
-  attr_accessor :position, :display
+  attr_accessor :position, :color, :display
 
-  def initialize(coordinates)
-    @position = coordinates
+  def initialize
+    @position = []
+    @color = nil
     @display = "X"
   end
 end
