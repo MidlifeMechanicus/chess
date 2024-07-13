@@ -1,5 +1,6 @@
 require_relative "main/board"
 require_relative "main/piece"
+require_relative "main/piece/king"
 
 # We will need a game_board that has pieces as attributes so it can track them.
 # We will need a peiece class, and subclasses.
@@ -12,5 +13,5 @@ require_relative "main/piece"
 # Do we need separate players with own pieces for organisation?
 
 board = Board.new
-p board
+board.set_board
 board.show_board

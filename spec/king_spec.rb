@@ -4,7 +4,7 @@ require "./lib/main/piece/king"
 describe King do
   describe "#initialize" do
     context "a new piece has been created" do
-      white_king = King.new([3, 0], "white")
+      white_king = King.new("white", [3, 0])
       it "should have a position" do
         expect(white_king.position).to eq([3, 0])
       end

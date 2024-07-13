@@ -2,13 +2,13 @@
 require_relative "../piece"
 
 class King < Piece
-  def initialize(coordinates, color)
+  def initialize(color, coordinates)
     @position = coordinates
     @color = color
     @display = set_display
   end
 
   def set_display
-    color == "black" ? "♚" : "♔"
+    color == "black" ? "\e[38;2;255;0;0m♔\e[0m" : "\e[38;2;255;255;255m♔\e[0m"
   end
 end

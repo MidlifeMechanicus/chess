@@ -9,5 +9,10 @@ class Board
     @board = Array.new(8) { Array.new(8) }
   end
 
+  def set_board
+    board[3][0] = King.new("white", [3, 0])
+    board[4][7] = King.new("black", [4, 7])
+  end
+
   include ShowBoard
 end
