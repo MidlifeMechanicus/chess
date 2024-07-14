@@ -10,7 +10,9 @@ class Game
   end
 
   def set_board
-    board[3][0] = King.new("white", [3, 0])
+    board[3][0] = Queen.new("white", [3, 0])
+    board[4][0] = King.new("white", [4, 0])
+    board[3][7] = Queen.new("black", [3, 7])
     board[4][7] = King.new("black", [4, 7])
   end
 
