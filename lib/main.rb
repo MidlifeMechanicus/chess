@@ -3,6 +3,7 @@ require_relative "main/player"
 require_relative "main/piece"
 require_relative "main/piece/king"
 require_relative "main/piece/queen"
+require_relative "main/piece/pawn"
 
 # We will need a game_board that has pieces as attributes so it can track them.
 # We will need a peiece class, and subclasses.
@@ -17,6 +18,5 @@ require_relative "main/piece/queen"
 game = Game.new
 game.set_board
 game.show_board
-# player_white = Player.new("white")
-# player_white.make_move(game, [3, 0, 3, 1])
-# game.show_board
+player_white = Player.new("white")
+puts player_white.get_move

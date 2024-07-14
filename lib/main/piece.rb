@@ -18,7 +18,10 @@ class Piece
       m if m[0].between?(0, 7) && m[1].between?(0, 7)
     end
   end
+  # need filter for pawn movements
 end
+
+# unify symbols
 
 # TRANSFORMATIONS = [[1, 2], [-2, -1], [-1, 2], [2, -1],
 #                      [1, -2], [-2, 1], [-1, -2], [2, 1]].freeze

@@ -21,18 +21,31 @@ class Player
     make_move(game, move)
   end
 
-  # def get_move
-  #   puts "Player #{name}, please enter your move, or enter 'help' for more information."
-  #   move = gets.chomp.downcase
-  #   check_move(move)
-  # end
-
-  def check_move(game, piece, stop)
-    if piece.restrict_to_board(piece.possible_moves).include?(stop)
-      true
+  def get_move
+    puts "Player #{name}, please enter your move, or enter 'help' for more information."
+    move = gets.chomp.downcase
+    case move
+    when "help"
+      show_instructions
     else
-      false
+      check_move(move)
     end
+  end
+
+  def show_instructions
+    puts "Holding message"
+    # get_move
+  end
+
+  def check_move(move)
+    # game, piece, stop
+    # if piece.restrict_to_board(piece.possible_moves).include?(stop)
+    #   true
+    # else
+    #   false
+    # end
+    #
+    puts "Cool"
   end
 
   def make_move(game, move)
