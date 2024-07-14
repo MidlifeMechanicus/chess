@@ -26,7 +26,16 @@ class Player
 
   def make_move(game, move)
     # move_array in the format [start_column, start_row, end_column, end_row]
-    game.board[move[2]][move[3]] = game.board[move[0]][move[1]]
+    piece = game.board[move[0]][move[1]]
+    move_square = [move[2], move[3]]
+
+    p move_square
+
+    p piece.restrict_to_board(piece.possible_moves)
+
+    return unless piece.restrict_to_board(piece.possible_moves).include?(move_square)
+
+    game.board[move[2]][move[3]] = piece
     game.board[move[0]][move[1]] = nil
   end
 end
