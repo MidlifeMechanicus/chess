@@ -1,4 +1,4 @@
-require_relative "main/board"
+require_relative "main/game"
 require_relative "main/player"
 require_relative "main/piece"
 require_relative "main/piece/king"
@@ -13,6 +13,9 @@ require_relative "main/piece/king"
 # movement rules stored in pieces
 # Do we need separate players with own pieces for organisation?
 
-board = Board.new
-board.set_board
-board.show_board
+game = Game.new
+game.set_board
+game.show_board
+player_white = Player.new("white")
+player_white.make_move(game, [3, 0, 3, 1])
+game.show_board

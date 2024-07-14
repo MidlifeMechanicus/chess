@@ -67,7 +67,7 @@ module ShowBoard
     h7 = board[7][6].display || "■"
     h8 = board[7][7].display || "□"
 
-    board = <<~END
+    game_board = <<~END
 
         A  B  C  D  E  F  G  H
       8[#{a8}][#{b8}][#{c8}][#{d8}][#{e8}][#{f8}][#{g8}][#{h8}]8
@@ -82,6 +82,6 @@ module ShowBoard
 
     END
 
-    puts board
+    puts game_board
   end
 end
