@@ -9,10 +9,13 @@ describe Piece do
         expect(piece.position).to eq([])
       end
       it "should have a color" do
-        expect(piece.color).to be nil
+        expect(piece.color).to eq("")
       end
       it "should have a display" do
         expect(piece.display).to eq("X")
+      end
+      it "should have a matrix" do
+        expect(piece.matrix).to eq([])
       end
     end
   end

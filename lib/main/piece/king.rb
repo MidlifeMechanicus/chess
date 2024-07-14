@@ -6,6 +6,8 @@ class King < Piece
     @position = coordinates
     @color = color
     @display = set_display
+    @matrix = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]].freeze
+    # We call #freeze becasue we do not want to accidentally change this parameter.
   end
 
   def set_display
