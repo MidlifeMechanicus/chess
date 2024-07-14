@@ -8,30 +8,37 @@ class Player
     @name = color.capitalize
   end
 
+  def move_piece(game)
+    # GET
+    move = [3, 0, 3, 1]
+    # This is a temporary input
+    # CHECK
+    start = [move[0], move[1]]
+    stop = [move[2], move[3]]
+    piece = game.board[move[0]][move[1]]
+
+    # DO
+    make_move(game, move)
+  end
+
   # def get_move
   #   puts "Player #{name}, please enter your move, or enter 'help' for more information."
   #   move = gets.chomp.downcase
   #   check_move(move)
   # end
 
-  def check_move(move)
-    move = move.chars
-    # need several checks
-    # check format
-    # check if valid
-    # separate module?
-    # check color
-    # check against piece
+  def check_move(game, piece, stop)
+    if piece.restrict_to_board(piece.possible_moves).include?(stop)
+      true
+    else
+      false
+    end
   end
 
   def make_move(game, move)
     # move_array in the format [start_column, start_row, end_column, end_row]
     piece = game.board[move[0]][move[1]]
     move_square = [move[2], move[3]]
-
-    p move_square
-
-    p piece.restrict_to_board(piece.possible_moves)
 
     return unless piece.restrict_to_board(piece.possible_moves).include?(move_square)
 

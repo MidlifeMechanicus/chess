@@ -18,10 +18,7 @@ describe King do
         expect(white_king.matrix).to eq([[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]])
       end
       it "should calculate possible moves" do
-        expect(white_king.possible_moves).to eq([[3, 1], [4, 1], [4, 0], [4, -1], [3, -1], [2, -1], [2, 0], [2, 1]])
-      end
-      it "should filter for board size" do
-        expect(white_king.restrict_to_board(white_king.possible_moves)).to eq([[3, 1], [4, 1], [4, 0], [2, 0], [2, 1]])
+        expect(white_king.possible_moves).to eq([[3, 1], [4, 1], [4, 0], [2, 0], [2, 1]])
       end
     end
   end

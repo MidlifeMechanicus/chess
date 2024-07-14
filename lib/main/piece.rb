@@ -11,8 +11,11 @@ class Piece
   end
 
   def possible_moves
-    matrix.map do |m|
+    moves = matrix.map do |m|
       [@position[0] + m[0], @position[1] + m[1]]
+    end
+    moves.keep_if do |m|
+      m if m[0].between?(0, 7) && m[1].between?(0, 7)
     end
   end
 
