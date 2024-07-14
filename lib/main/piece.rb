@@ -15,6 +15,12 @@ class Piece
       [@position[0] + m[0], @position[1] + m[1]]
     end
   end
+
+  def restrict_to_board(array)
+    array.keep_if do |m|
+      m if m[0].between?(0, 7) && m[1].between?(0, 7)
+    end
+  end
 end
 
 # TRANSFORMATIONS = [[1, 2], [-2, -1], [-1, 2], [2, -1],

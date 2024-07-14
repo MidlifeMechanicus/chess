@@ -16,6 +16,10 @@ require_relative "main/piece/king"
 game = Game.new
 game.set_board
 game.show_board
-player_white = Player.new("white")
-player_white.make_move(game, [3, 0, 3, 1])
-game.show_board
+# player_white = Player.new("white")
+# player_white.make_move(game, [3, 0, 3, 1])
+# game.show_board
+
+puts game.board[3][0]
+p game.board[3][0].possible_moves
+array = game.board[3][0].possible_moves
