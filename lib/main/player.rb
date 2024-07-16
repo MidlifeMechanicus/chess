@@ -39,6 +39,10 @@ class Player
 
   def check_move(move)
     # game, piece, stop
+    #
+    # TWO QUIESTIONS: IS FORMAT VALID? IS PIECE VALID?
+    # THATS IT
+    # RENAME?
     # if piece.restrict_to_board(piece.possible_moves).include?(stop)
     #   true
     # else

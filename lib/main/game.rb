@@ -10,8 +10,14 @@ class Game
   end
 
   def set_board
+    board[0][0] = Rook.new("white", [0, 0])
+    board[1][0] = Knight.new("white", [1, 0])
+    board[2][0] = Bishop.new("white", [2, 0])
     board[3][0] = Queen.new("white", [3, 0])
     board[4][0] = King.new("white", [4, 0])
+    board[5][0] = Bishop.new("white", [5, 0])
+    board[6][0] = Knight.new("white", [6, 0])
+    board[7][0] = Rook.new("white", [7, 0])
     board[0][1] = Pawn.new("white", [0, 1])
     board[1][1] = Pawn.new("white", [1, 1])
     board[2][1] = Pawn.new("white", [2, 1])
@@ -28,8 +34,14 @@ class Game
     board[5][6] = Pawn.new("black", [5, 6])
     board[6][6] = Pawn.new("black", [6, 6])
     board[7][6] = Pawn.new("black", [7, 6])
+    board[0][7] = Rook.new("black", [0, 7])
+    board[1][7] = Knight.new("black", [1, 7])
+    board[2][7] = Bishop.new("black", [2, 7])
     board[3][7] = Queen.new("black", [3, 7])
     board[4][7] = King.new("black", [4, 7])
+    board[5][7] = Bishop.new("black", [5, 7])
+    board[6][7] = Knight.new("black", [6, 7])
+    board[7][7] = Rook.new("black", [7, 7])
   end
 
   include ShowBoard

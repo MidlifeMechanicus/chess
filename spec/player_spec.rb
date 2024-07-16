@@ -21,7 +21,7 @@ describe Player do
       expect(player).to receive(:show_instructions)
       player.get_move
     end
-    it "should call #check_move" do
+    it "should call #check_move otherwise" do
       player = Player.new("black")
       allow(player).to receive(:gets).and_return("test")
       expect(player).to receive(:check_move)
