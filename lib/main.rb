@@ -1,3 +1,5 @@
+require "matrix"
+# # This allows vector addition.
 require_relative "main/game"
 require_relative "main/player"
 require_relative "main/piece"
@@ -8,21 +10,65 @@ require_relative "main/piece/knight"
 require_relative "main/piece/rook"
 require_relative "main/piece/pawn"
 
-# We will need a game_board that has pieces as attributes so it can track them.
-# We will need a peiece class, and subclasses.
-# Will have to think about how to save, but that can probably happen at the end.
-# Not TDD, but def use rspec where possible.
-# While it is a terminal game, I still need a board display.
-# Consider chess notation
-# have to select piece at a given node, then check that the move is valid
-# movement rules stored in pieces
-# Do we need separate players with own pieces for organisation?
-
 # game = Game.new
 # game.set_board
 # game.show_board
-# player_white = Player.new("white")
+#
+piece = Piece.new
+piece.matrix = [[0, 1], [0, -1]]
+piece.position = [4, 4]
+p piece.possible_moves(1)
+# game.board[4][4] = Rook.new("black", [4, 4])
+# game.show_board
 
-# p game.board[2][7].matrix
-# p game.board[2][7].possible_moves
-# # puts player_white.get_move
+# test_rook = game.board[4][4]
+# p test_rook.possible_moves
+
+# position = Vector[4, 4]
+# matrix = [Vector[0, 1], Vector[1, 0], Vector[0, -1], Vector[-1, 0]]
+
+# puts position * 2
+
+# moves = position.map do |p|
+#   maxtrix.map do |m|
+#     ?
+#   end
+# end
+#
+# position = [4, 4]
+
+# def get_rook_matrix
+#   base_matrix = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+#   range = [1, 2, 3, 4, 5, 6, 7]
+#   matrix = range.map do |r|
+#     base_matrix.map { |m| [m[0] * r, m[1] * r] }
+#   end
+#   matrix.flatten(1)
+# end
+
+# p get_rook_matrix
+
+# def alt_get_rook_matrix
+#   position = [4, 4]
+#   base_matrix = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+#   range = [1, 2]
+#   matrix = base_matrix.map do |m|
+#     range.map do |r|
+#       [m[0] * r, m[1] * r]
+#       break if [m[0] * r, m[1] * r] == [0, 1]
+#     end
+#   end
+#   matrix.flatten(1)
+# end
+# position = Vector[4, 4]
+
+# def rec_rook(vec, current = [4, 4])
+#   # return current if current == [6, 6]
+
+#   current = [current[0] + vec[0], current[1] + vec[1]]
+#   return [current] if current == [7, 7]
+
+#   [current] + rec_rook(vec, current)
+# end
+
+# p rec_rook(Vector[1, 1])
