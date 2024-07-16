@@ -15,12 +15,16 @@ describe Bishop do
         expect(bishop.display).to eq("\e[38;2;255;0;0m♝\e[0m")
       end
       it "should have a move matrix" do
-        expect(bishop.matrix).to eq([[1, 1], [1, -1], [-1, -1], [-1, 1], [2, 2], [2, -2], [-2, -2], [-2, 2], [3, 3],
-                                     [3, -3], [-3, -3], [-3, 3], [4, 4], [4, -4], [-4, -4], [-4, 4], [5, 5], [5, -5], [-5, -5], [-5, 5], [6, 6], [6, -6], [-6, -6], [-6, 6], [7, 7], [7, -7], [-7, -7], [-7, 7]])
+        expect(bishop.matrix).to eq([[1, 1], [1, -1], [-1, -1], [-1, 1]])
       end
-      it "should calculate possible moves" do
-        expect(bishop.possible_moves).to eq([[3, 6], [1, 6], [4, 5], [0, 5], [5, 4], [6, 3], [7, 2]])
-      end
+    end
+  end
+  describe "#possible_moves" do
+    game = Game.new
+    test_piece = Bishop.new("white", [2, 0])
+    game.board[2][0] = test_piece
+    it "should calculate possible moves" do
+      expect(test_piece.possible_moves(game)).to eq([[3, 1], [4, 2], [5, 3], [6, 4], [7, 5], [1, 1], [0, 2]])
     end
   end
 end

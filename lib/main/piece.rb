@@ -12,6 +12,7 @@ class Piece
   end
 
   def possible_moves(game)
+    # This function works for Rooks, Bishops and Queens. Other pieces need a simplified method.
     moves = matrix.map do |m|
       move_vector(game, m)
     end
@@ -24,19 +25,8 @@ class Piece
     square = [square[0] + vector[0], square[1] + vector[1]]
     return [square] if !square[0].between?(0, 7) || !square[1].between?(0, 7) || !game.board[square[0]][square[1]].nil?
 
-    # Need collision base case
-
     [square] + move_vector(game, vector, square)
   end
-
-  # def possible_moves
-  #   moves = matrix.map do |m|
-  #     [@position[0] + m[0], @position[1] + m[1]]
-  #   end
-  #   moves.keep_if do |m|
-  #     m if m[0].between?(0, 7) && m[1].between?(0, 7)
-  #   end
-  # end
 
   def check_ally_occupied(game, location)
     if game.board[location[0]][location[1]].nil? ||
@@ -46,15 +36,12 @@ class Piece
       true
     end
   end
-  # need filter for pawn movements
+
+  def check_move_valid(game, move)
+    if possible_moves(game).include?(move) && !check_ally_occupied(game, move)
+      true
+    else
+      false
+    end
+  end
 end
-
-# unify symbols
-
-# TRANSFORMATIONS = [[1, 2], [-2, -1], [-1, 2], [2, -1],
-#                      [1, -2], [-2, 1], [-1, -2], [2, 1]].freeze
-
-# TRANSFORMATIONS.map { |t| [@position[0] + t[0], @position[1] + t[1]] }
-#                    .keep_if { |e| MoveNode.valid?(e) }
-#                    .reject { |e| @@history.include?(e) }
-#                    .map { |e| MoveNode.new(e, self) }

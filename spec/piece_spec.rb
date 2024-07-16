@@ -52,6 +52,32 @@ describe Piece do
       end
     end
   end
+
+  context "a new game has been created" do
+    game = Game.new
+    describe "#check_move_valid" do
+      test_piece = Piece.new("black", [1, 1])
+      game.board[1][1] = test_piece
+      it "should recognize a valid move" do
+        expect(test_piece.check_move_valid(game, [7, 1])).to be true
+      end
+      it "should not move past a blocking piece" do
+        ally_piece = Piece.new("black", [6, 1])
+        game.board[6][1] = ally_piece
+        expect(test_piece.check_move_valid(game, [7, 1])).to be false
+      end
+      it "should not move onto an ally piece" do
+        ally_piece = Piece.new("black", [6, 1])
+        game.board[6][1] = ally_piece
+        expect(test_piece.check_move_valid(game, [6, 1])).to be false
+      end
+      it "should move onto an enemy piece" do
+        enemy_piece = Piece.new("white", [6, 1])
+        game.board[6][1] = enemy_piece
+        expect(test_piece.check_move_valid(game, [6, 1])).to be true
+      end
+    end
+  end
 end
 
 # ♕♖♗♘♙
