@@ -13,4 +13,14 @@ class Knight < Piece
   def set_display
     color == "black" ? "\e[38;2;255;0;0m♞\e[0m" : "\e[38;2;255;255;255m♞\e[0m"
   end
+
+  def possible_moves(game)
+    # This function is specific for Knights.
+    moves = matrix.map do |m|
+      [position[0] + m[0], position[1] + m[1]]
+    end
+    moves.keep_if do |m|
+      m if m[0].between?(0, 7) && m[1].between?(0, 7)
+    end
+  end
 end

@@ -17,9 +17,15 @@ describe King do
       it "should have a move matrix" do
         expect(white_king.matrix).to eq([[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]])
       end
-      it "should calculate possible moves" do
-        expect(white_king.possible_moves).to eq([[3, 1], [4, 1], [4, 0], [2, 0], [2, 1]])
-      end
     end
+  end
+  describe "#possible_moves" do
+    game = Game.new
+    test_piece = King.new("white", [3, 0])
+    game.board[3][0] = test_piece
+    it "should calculate possible moves" do
+      expect(test_piece.possible_moves(game)).to eq([[3, 1], [4, 1], [4, 0], [2, 0], [2, 1]])
+    end
+    # Still need check-checker.
   end
 end

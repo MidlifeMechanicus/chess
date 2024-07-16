@@ -11,5 +11,5 @@ require_relative "main/piece/pawn"
 game = Game.new
 # game.set_board
 # game.show_board
-piece = Queen.new("white", [3, 7])
+piece = King.new("white", [3, 0])
 p piece.possible_moves(game)
