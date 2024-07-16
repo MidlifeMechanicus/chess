@@ -22,4 +22,6 @@ game = Game.new
 game.set_board
 game.show_board
 player_white = Player.new("white")
+
+p game.board[1][0].possible_moves
 # puts player_white.get_move

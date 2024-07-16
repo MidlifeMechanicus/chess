@@ -12,7 +12,7 @@ describe King do
         expect(white_king.color).to eq("white")
       end
       it "should have a display" do
-        expect(white_king.display).to eq("\e[38;2;255;255;255m♔\e[0m")
+        expect(white_king.display).to eq("\e[38;2;255;255;255m♚\e[0m")
       end
       it "should have a move matrix" do
         expect(white_king.matrix).to eq([[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]])
