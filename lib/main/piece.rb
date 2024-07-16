@@ -18,6 +18,15 @@ class Piece
       m if m[0].between?(0, 7) && m[1].between?(0, 7)
     end
   end
+
+  def check_ally_occupied(game, location)
+    if game.board[location[0]][location[1]].nil? ||
+       (game.board[location[0]][location[1]].color != color)
+      false
+    else
+      true
+    end
+  end
   # need filter for pawn movements
 end
 

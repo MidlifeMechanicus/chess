@@ -1,4 +1,4 @@
-# Tests behaviour of Queen. # ,
+# Tests behaviour of Queen.
 require "./lib/main/piece/queen"
 
 describe Queen do
