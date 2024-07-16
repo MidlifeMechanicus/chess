@@ -1,4 +1,4 @@
-require "matrix"
+# require "matrix"
 # # This allows vector addition.
 require_relative "main/game"
 require_relative "main/player"
@@ -14,10 +14,10 @@ require_relative "main/piece/pawn"
 # game.set_board
 # game.show_board
 #
-piece = Piece.new
-piece.matrix = [[0, 1], [0, -1]]
-piece.position = [4, 4]
-p piece.possible_moves(1)
+piece = Piece.new("black", [1, 1])
+# piece.matrix = [[0, 1], [0, -1]]
+# piece.position = [4, 4]
+# p piece.possible_moves(1)
 # game.board[4][4] = Rook.new("black", [4, 4])
 # game.show_board
 

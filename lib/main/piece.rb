@@ -4,11 +4,11 @@ require "./lib/main/game"
 class Piece
   attr_accessor :position, :color, :display, :matrix
 
-  def initialize
-    @position = []
-    @color = ""
+  def initialize(color, position)
+    @position = position
+    @color = color
     @display = "X"
-    @matrix = []
+    @matrix = [[1, 0], [-1, 0]]
   end
 
   def possible_moves(game)
@@ -22,7 +22,7 @@ class Piece
 
   def move_vector(game, vector, square = position)
     square = [square[0] + vector[0], square[1] + vector[1]]
-    return [square] if !square[0].between?(0, 7) || !square[1].between?(0, 7)
+    return [square] if !square[0].between?(0, 7) || !square[1].between?(0, 7) || !game.board[square[0]][square[1]].nil?
 
     # Need collision base case
 
