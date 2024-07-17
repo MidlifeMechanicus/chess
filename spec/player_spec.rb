@@ -17,21 +17,6 @@ describe Player do
     end
   end
 
-  describe "#get_move" do
-    it "should call #show_instructions on getting 'help'" do
-      player = Player.new("black")
-      allow(player).to receive(:gets).and_return("help")
-      expect(player).to receive(:show_instructions)
-      player.get_move
-    end
-    it "should call #check_move otherwise" do
-      player = Player.new("black")
-      allow(player).to receive(:gets).and_return("test")
-      expect(player).to receive(:check_move)
-      player.get_move
-    end
-  end
-
   describe "#make_move" do
     context "a new game has been created" do
       game = Game.new

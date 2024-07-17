@@ -1,5 +1,6 @@
 # Creates a player to move Pieces.
 require_relative "player/check"
+require_relative "player/move"
 
 class Player
   attr_accessor :color, :name, :currently_in_check
@@ -11,32 +12,37 @@ class Player
   end
 
   def move_piece(game)
+    # This method regulates the relationship between the movement related functions.
+
+    move_accepted = false
+    chosen_piece = nil
+
+    until move_accepted == true
+      game.show_board
+
+      move = get_move.downcase.tr("1-8", "0-7").tr("a-h", "0-7").each_char.map(&:to_i)
+      # This line converts from conventional chess notation to array coordinates.
+
+      puts "That command was not understood. Please try again." unless move_format(move) == true
+
+      puts "That is not one of your pieces. Please try again" unless piece_valid(game, move) == true
+
+      chosen_piece = game.board[move[0]][move[1]]
+
+      move_accepted = true if move == [7, 7, 7, 7]
+      # Temporary escape
+    end
     # GET
-    move = [3, 0, 3, 1]
-    # This is a temporary input
-    # CHECK
-    start = [move[0], move[1]]
-    stop = [move[2], move[3]]
-    piece = game.board[move[0]][move[1]]
 
     # DO
-    make_move(game, move)
-  end
-
-  def get_move
-    puts "Player #{name}, please enter your move, or enter 'help' for more information."
-    move = gets.chomp.downcase
-    case move
-    when "help"
-      show_instructions
-    else
-      check_move(move)
-    end
+    #
+    puts "well done!"
+    # make_move(game, move)
   end
 
   def show_instructions
     puts "Holding message"
-    # get_move
+    get_move
   end
 
   def check_move(move)
@@ -66,6 +72,7 @@ class Player
   end
 
   include Check
+  include Move
 end
 
 # need get_help 'start-column-letter start-row-number end-column-letter end-column-number', with no spaces. /n
