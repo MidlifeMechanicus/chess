@@ -20,6 +20,9 @@ describe Piece do
         it "should have a matrix" do
           expect(piece.matrix).to eq([[1, 0], [-1, 0]])
         end
+        it "should not have moved yet" do
+          expect(piece.has_moved).to be false
+        end
       end
     end
 
