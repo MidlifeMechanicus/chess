@@ -1,11 +1,13 @@
 # Creates a player to move Pieces.
+require_relative "player/check"
 
 class Player
-  attr_accessor :color, :name
+  attr_accessor :color, :name, :currently_in_check
 
   def initialize(color)
     @color = color
     @name = color.capitalize
+    @currently_in_check = false
   end
 
   def move_piece(game)
@@ -62,6 +64,8 @@ class Player
     game.board[move[2]][move[3]] = piece
     game.board[move[0]][move[1]] = nil
   end
+
+  include Check
 end
 
 # need get_help 'start-column-letter start-row-number end-column-letter end-column-number', with no spaces. /n

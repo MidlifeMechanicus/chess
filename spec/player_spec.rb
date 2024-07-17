@@ -11,6 +11,9 @@ describe Player do
       it "should have a name" do
         expect(white_player.name).to eq("White")
       end
+      it "should not be in check" do
+        expect(white_player.currently_in_check).to be false
+      end
     end
   end
 
