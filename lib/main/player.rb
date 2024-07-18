@@ -1,4 +1,12 @@
 # Creates a player to move Pieces.
+require "./lib/main/game"
+require "./lib/main/piece"
+require "./lib/main/piece/king"
+require "./lib/main/piece/queen"
+require "./lib/main/piece/bishop"
+require "./lib/main/piece/knight"
+require "./lib/main/piece/rook"
+require "./lib/main/piece/pawn"
 require_relative "player/check"
 require_relative "player/move"
 
@@ -21,17 +29,15 @@ class Player
 
     until move_accepted == true
       game.show_board
-
-      move = get_move.downcase.tr("1-8", "0-7").tr("a-h", "0-7").each_char.map(&:to_i)
+      move = get_move
+      move = filter_move_string(move)
       # This line converts from conventional chess notation to array coordinates.
-      chosen_piece = game.board[move[0]][move[1]]
-      move_square = [move[2], move[3]]
 
-      if move_format(move) != true
+      if move.length != 4
         puts "That command was not understood. Please try again."
       elsif piece_valid(game, move) != true
         puts "That is not one of your pieces. Please try again"
-      elsif chosen_piece.check_move_valid(game, move_square) != true
+      elsif game.board[move[0]][move[1]].check_move_valid(game, [move[2], move[3]]) != true
         puts "That piece cannot move there. Please try again."
       # elsif move creates check
       else
@@ -40,9 +46,6 @@ class Player
         move_accepted = true
       end
     end
-    # GET
-
-    # DO -move pieces; alter has_moved
     # SCOPE!!!!
     puts "well done!"
     # make_move(game, move)
@@ -51,17 +54,6 @@ class Player
   def show_instructions
     puts "Holding message"
     get_move
-  end
-
-  def make_move(game, move)
-    # move_array in the format [start_column, start_row, end_column, end_row]
-    chosen_piece = game.board[move[0]][move[1]]
-    move_square = [move[2], move[3]]
-    chosen_piece.position = move_square
-    chosen_piece.has_moved = true
-
-    game.board[move[2]][move[3]] = chosen_piece
-    game.board[move[0]][move[1]] = nil
   end
 
   include Check
