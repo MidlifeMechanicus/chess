@@ -14,6 +14,8 @@ class Player
   def move_piece(game)
     # This method regulates the relationship between the movement related functions.
 
+    # Need to check for check.
+
     move_accepted = false
     chosen_piece = nil
 
@@ -22,20 +24,26 @@ class Player
 
       move = get_move.downcase.tr("1-8", "0-7").tr("a-h", "0-7").each_char.map(&:to_i)
       # This line converts from conventional chess notation to array coordinates.
-
-      puts "That command was not understood. Please try again." unless move_format(move) == true
-
-      puts "That is not one of your pieces. Please try again" unless piece_valid(game, move) == true
-
       chosen_piece = game.board[move[0]][move[1]]
+      move_square = [move[2], move[3]]
 
-      move_accepted = true if move == [7, 7, 7, 7]
-      # Temporary escape
+      if move_format(move) != true
+        puts "That command was not understood. Please try again."
+      elsif piece_valid(game, move) != true
+        puts "That is not one of your pieces. Please try again"
+      elsif chosen_piece.check_move_valid(game, move_square) != true
+        puts "That piece cannot move there. Please try again."
+      # elsif move creates check
+      else
+        make_move(game, move)
+        game.show_board
+        move_accepted = true
+      end
     end
     # GET
 
-    # DO
-    #
+    # DO -move pieces; alter has_moved
+    # SCOPE!!!!
     puts "well done!"
     # make_move(game, move)
   end
@@ -45,29 +53,14 @@ class Player
     get_move
   end
 
-  def check_move(move)
-    # game, piece, stop
-    #
-    # TWO QUIESTIONS: IS FORMAT VALID? IS PIECE VALID?
-    # THATS IT
-    # RENAME?
-    # if piece.restrict_to_board(piece.possible_moves).include?(stop)
-    #   true
-    # else
-    #   false
-    # end
-    #
-    puts "Cool"
-  end
-
   def make_move(game, move)
     # move_array in the format [start_column, start_row, end_column, end_row]
-    piece = game.board[move[0]][move[1]]
+    chosen_piece = game.board[move[0]][move[1]]
     move_square = [move[2], move[3]]
+    chosen_piece.position = move_square
+    chosen_piece.has_moved = true
 
-    return unless piece.restrict_to_board(piece.possible_moves).include?(move_square)
-
-    game.board[move[2]][move[3]] = piece
+    game.board[move[2]][move[3]] = chosen_piece
     game.board[move[0]][move[1]] = nil
   end
 
