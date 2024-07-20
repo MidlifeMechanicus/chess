@@ -17,17 +17,7 @@ describe Player do
     end
   end
 
-  describe "#make_move" do
-    context "a new game has been created" do
-      game = Game.new
-      game.set_board
-      player_white = Player.new("white")
-      xit "should move White King from D1 to D2" do
-        white_king = game.board[3][0]
-        player_white.make_move(game, [3, 0, 3, 1])
-        expect(game.board[3][1]).to eq(white_king)
-        expect(game.board[3][0]).to be nil
-      end
-    end
+  describe "#show_instructions" do
+    # This is where instructions and save/load commands will be held.
   end
 end

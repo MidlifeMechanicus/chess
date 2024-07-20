@@ -1,5 +1,5 @@
 # Tests behaviour of Check module.
-require "./lib/main"
+require "./lib/main/player"
 
 describe Player do
   describe "#find_king" do
