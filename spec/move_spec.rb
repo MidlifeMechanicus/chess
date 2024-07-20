@@ -65,15 +65,20 @@ describe Player do
     game = Game.new
     game.set_board
     player = Player.new("black")
-    move = [1,7,2,5]
+    move = [1, 7, 2, 5]
     chosen_piece = game.board[move[0]][move[1]]
     player.make_move(game, move)
     it "should set the starting square to nil" do
       expect(game.board[1][7]).to be nil
     end
-    xit "should set the destination square to chosen_piece" do
-      expect(game.board[2][5]).to be nil
-      # Need to account for changes to chosen_piece
+    it "should set chosen_piece position to destination coordinates" do
+      expect(chosen_piece.position).to eq([2, 5])
+    end
+    it "should mark chosen_piece as having moved" do
+      expect(chosen_piece.has_moved).to be true
+    end
+    it "should mark the destination square as containing chosen_piece" do
+      expect(game.board[2][5]).to eq(chosen_piece)
     end
   end
 end
