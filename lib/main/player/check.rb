@@ -8,10 +8,11 @@ module Check
         next if square.nil?
         next if square.color == color
 
-        if square.possible_moves(game).include?(king_position)
-          check = true
-          break
-        end
+        next unless square.possible_moves(game).include?(king_position)
+
+        # Be careful of pawn advance move; may need to refactor!
+        check = true
+        break
       end
     end
     check
@@ -35,7 +36,7 @@ module Check
         next unless piece_valid(game, [i, j]) == true
 
         square.possible_moves(game).each do |move|
-          potential_game = Marshal.load(Marshal.dump(game))
+          working_copy = Marshal.load(Marshal.dump(game))
           # It is well accepted that Ruby is a pass-by-value, high level programming language.
           # Unfortunately, this is slightly incorrect,
           # Ruby does pass-by-value, however, most values in ruby are references.
@@ -46,8 +47,8 @@ module Check
           # Changes the 'copy' flow back to the original, perhanently changing it!
           # This is similar to the mastermind project where we had to use #dup to create a 'safe' working copy.
           # That does not work with more complex objects, however. We must instead serialise and load the object as done above.
-          make_move(potential_game, [i, j, move[0], move[1]])
-          if check_check(potential_game) == false
+          make_move(working_copy, [i, j, move[0], move[1]])
+          if check_check(working_copy) == false
             checkmate = false
             break
           end
