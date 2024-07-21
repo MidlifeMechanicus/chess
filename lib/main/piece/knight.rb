@@ -3,9 +3,7 @@ require_relative "../piece"
 
 class Knight < Piece
   def initialize(color, coordinates)
-    @position = coordinates
-    @color = color
-    @display = set_display
+    super
     @matrix = [[1, 2], [2, 1], [2, -1], [1, -2], [-1, -2], [-2, -1], [-2, 1], [1, -2]].freeze
     # We call #freeze becasue we do not want to accidentally change this parameter.
   end

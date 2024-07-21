@@ -18,9 +18,9 @@ describe Pawn do
         expect(white_pawn.display).to eq("\e[38;2;255;255;255m♙\e[0m")
         expect(black_pawn.display).to eq("\e[38;2;255;0;0m♙\e[0m")
       end
-      it "should have a move matrix" do
-        expect(white_pawn.matrix).to eq([[0, 1], [0, 2], [1, 1], [-1, 1]])
-        expect(black_pawn.matrix).to eq([[0, -1], [0, -2], [1, -1], [-1, -1]])
+      it "should not have a move matrix" do
+        expect(white_pawn.matrix).to eq([])
+        expect(black_pawn.matrix).to eq([])
       end
     end
   end
@@ -35,11 +35,19 @@ describe Pawn do
       test_piece.has_moved = true
       expect(test_piece.possible_moves(game)).to eq([[3, 2]])
     end
-    it "should calculate additional possible moves for occupied diagonals" do
-      game.board[4][2] = Pawn.new("white", [4, 2])
+    it "should calculate additional possible moves for enemy occupied diagonals" do
+      game.board[4][2] = Pawn.new("black", [4, 2])
       game.board[2][2] = Pawn.new("black", [2, 2])
-      expect(test_piece.possible_moves(game)).to eq([[3, 2], [4, 2], [2, 2]])
+      expect(test_piece.possible_moves(game)).to eq([[3, 2], [2, 2], [4, 2]])
     end
-    # Still need check-checker.
+    it "should not calculate additional possible moves for ally occupied diagonals" do
+      game.board[4][2] = Pawn.new("white", [4, 2])
+      game.board[2][2] = Pawn.new("white", [2, 2])
+      expect(test_piece.possible_moves(game)).to eq([[3, 2]])
+    end
+    it "should not show any possible moves if blocked" do
+      game.board[3][2] = Pawn.new("black", [3, 2])
+      expect(test_piece.possible_moves(game)).to eq([])
+    end
   end
 end

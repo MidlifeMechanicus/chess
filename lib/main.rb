@@ -11,7 +11,6 @@ require_relative "main/piece/pawn"
 # Still to be implemented:
 # Castling
 # En passant
-# Stalemate
 # Promotion
 # Save
 # Load
@@ -21,8 +20,11 @@ require_relative "main/piece/pawn"
 
 game = Game.new
 game.set_board
-black_player = Player.new("black")
-black_player.move_piece(game)
+game.show_board
+p game.board[3][1]
+# black_player = Player.new("black")
+
+# black_player.move_piece(game)
 
 # TESTING CHECK
 

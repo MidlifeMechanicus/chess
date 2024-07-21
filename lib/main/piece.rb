@@ -4,12 +4,16 @@ require "./lib/main/game"
 class Piece
   attr_accessor :position, :color, :display, :matrix, :has_moved
 
-  def initialize(color, position)
-    @position = position
+  def initialize(color, coordinates)
+    @position = coordinates
     @color = color
-    @display = "X"
+    @display = set_display
     @matrix = [[1, 0], [-1, 0]]
     @has_moved = false
+  end
+
+  def set_display
+    color == "black" ? "X" : "O"
   end
 
   def possible_moves(game)
