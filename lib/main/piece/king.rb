@@ -20,6 +20,5 @@ class King < Piece
     moves.keep_if do |m|
       m if m[0].between?(0, 7) && m[1].between?(0, 7)
     end
-    # Still needs check-checker.
   end
 end

@@ -22,19 +22,20 @@ class Player
   def move_piece(game)
     # This method regulates the relationship between the movement related functions.
 
-    # if check_check(game) == true || check_mate(game) == true
-    #   puts "Checkmate. Player #{name} has been defeated."
-    #   # Any end of game code here.
-    #   return
-    # elsif check_mate(game) == true
-    #   puts "Stalemate. Player #{name} is not in check, but has no legal moves. The game is a tie."
-    #   # Any end of game code here.
-    #   return
-    # elsif check_check(game) == true
-    #   puts "Player #{name} is in check."
-    # else
-    #   puts "It is Player #{name}'s move."
-    # end
+    if check_check(game) == true &&
+       check_mate(game) == true
+      puts "Checkmate. Player #{name} has been defeated."
+      # Any end of game code here.
+      return
+    elsif check_mate(game) == true
+      puts "Stalemate. Player #{name} is not in check, but has no legal moves. The game is a tie."
+      # Any end of game code here.
+      return
+    elsif check_check(game) == true
+      puts "Player #{name} is in check."
+    else
+      puts "It is Player #{name}'s move."
+    end
 
     move_accepted = false
     chosen_piece = nil
@@ -55,9 +56,9 @@ class Player
         working_copy = Marshal.load(Marshal.dump(game))
         make_move(working_copy, move)
         if check_check(working_copy) == true
-          move_accepted = true
-        else
           puts "That move would put you in check. Please try again."
+        else
+          move_accepted = true
         end
       end
     end

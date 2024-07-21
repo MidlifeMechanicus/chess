@@ -35,4 +35,5 @@ describe Player do
       end
     end
   end
+  # Must test check_mate.
 end

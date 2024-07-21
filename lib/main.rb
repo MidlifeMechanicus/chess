@@ -20,11 +20,10 @@ require_relative "main/piece/pawn"
 
 game = Game.new
 game.set_board
-game.show_board
-p game.board[3][1]
-# black_player = Player.new("black")
+white_player = Player.new("white")
+black_player = Player.new("black")
 
-# black_player.move_piece(game)
+game.play_game(white_player, black_player)
 
 # TESTING CHECK
 

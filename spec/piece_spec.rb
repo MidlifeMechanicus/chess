@@ -82,5 +82,3 @@ describe Piece do
     end
   end
 end
-
-# ♕♖♗♘♙

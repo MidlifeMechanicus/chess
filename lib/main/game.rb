@@ -2,10 +2,11 @@
 require_relative "game/show_board"
 
 class Game
-  attr_accessor :board
+  attr_accessor :board, :game_over
 
   def initialize
     @board = Array.new(8) { Array.new(8) }
+    @game_over = false
   end
 
   def set_board
@@ -43,6 +44,15 @@ class Game
     board[7][7] = Rook.new("black", [7, 7])
   end
 
+  def play_game(white_player, black_player)
+    until game_over == true
+      white_player.move_piece(self)
+      break if game_over == true
+
+      black_player.move_piece(self)
+      break if game_over == true
+    end
+  end
   include ShowBoard
 end
 

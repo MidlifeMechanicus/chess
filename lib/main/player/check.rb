@@ -10,7 +10,6 @@ module Check
 
         next unless square.possible_moves(game).include?(king_position)
 
-        # Be careful of pawn advance move; may need to refactor!
         check = true
         break
       end
