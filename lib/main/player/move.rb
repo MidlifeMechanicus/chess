@@ -1,12 +1,12 @@
 # Contains the methods allowing Players to move Pieces.
 
 module Move
-  def get_move
+  def get_move(game)
     puts "Player #{name}, please enter your move, or enter 'help' for more information."
     move = gets.chomp.downcase
     case move
     when "help"
-      show_instructions
+      game.show_instructions
     else
       move
     end

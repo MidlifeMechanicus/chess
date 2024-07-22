@@ -42,7 +42,7 @@ class Player
 
     until move_accepted == true
       game.show_board
-      move = get_move
+      move = get_move(game)
       move = filter_move_string(move)
       # This line converts from conventional chess notation to array coordinates.
 
@@ -67,10 +67,10 @@ class Player
     game.show_board
   end
 
-  def show_instructions
-    puts "Holding message"
-    get_move
-  end
+  # def show_instructions
+  #   puts "Holding message"
+  #   get_move
+  # end
 
   include Check
   include Move

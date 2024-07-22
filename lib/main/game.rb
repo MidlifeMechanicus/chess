@@ -53,8 +53,25 @@ class Game
 
       black_player.move_piece(self)
       break if game_over == true
+
+      # refactor to use current_player
     end
   end
+
+  def show_instructions
+    puts "To move, enter the starting column and row followed by the destination column and row."
+    puts "Do not use spaces. Both uppercase and lowercase characters work."
+    puts "Example: A1A3"
+    puts "Other commands include:\n
+    'help' - shows this help message\n
+    'save' - saves the current game\n
+    'load' - loads the last saved game\n
+    'quit' - leaves the current game\n
+    'resign' - surrenders the current game"
+    show_board
+    current_player.get_move(self)
+  end
+
   include ShowBoard
 end
 

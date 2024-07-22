@@ -25,12 +25,7 @@ black_player = Player.new("black")
 game.current_player = white_player
 game.next_player = black_player
 
-game.current_player.move_piece(game)
-
-p game.current_player
-p game.next_player
-
-# game.play_game(white_player, black_player)
+game.play_game(white_player, black_player)
 
 # TESTING CHECK
 
