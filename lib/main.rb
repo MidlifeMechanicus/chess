@@ -7,6 +7,31 @@ require_relative "main/piece/bishop"
 require_relative "main/piece/knight"
 require_relative "main/piece/rook"
 require_relative "main/piece/pawn"
+require "yaml"
+
+def load_game
+  # Check for saved game
+  game = YAML.safe_load_file(
+    "saved_game.yml",
+    permitted_classes: [Game,
+                        King,
+                        Queen,
+                        Bishop,
+                        Knight,
+                        Rook,
+                        Pawn,
+                        Player,
+                        Symbol]
+  )
+  if game.current_player.color == "black"
+    black_player = game.current_player
+    white_player = game.next_player
+  else
+    black_player = game.next_player
+    white_player = game.current_player
+  end
+  game.current_player.move_piece(game)
+end
 
 # Still to be implemented:
 # Castling

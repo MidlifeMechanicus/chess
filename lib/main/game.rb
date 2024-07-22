@@ -72,6 +72,12 @@ class Game
     current_player.get_move(self)
   end
 
+  def save_game
+    File.write("saved_game.yml", to_yaml)
+    show_board
+    current_player.get_move(self)
+  end
+
   include ShowBoard
 end
 

@@ -7,6 +7,10 @@ module Move
     case move
     when "help"
       game.show_instructions
+    when "save"
+      game.save_game
+    when "load"
+      load_game
     else
       move
     end
