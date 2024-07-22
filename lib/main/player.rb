@@ -46,6 +46,7 @@ class Player
       move = filter_move_string(move)
       # This line converts from conventional chess notation to array coordinates.
 
+      # Implement break for game over if loading saved games proves an issue.
       if move.length != 4
         puts "That command was not understood. Please try again."
       elsif piece_valid(game, move) != true
@@ -66,11 +67,6 @@ class Player
     game.current_player, game.next_player = game.next_player, game.current_player
     game.show_board
   end
-
-  # def show_instructions
-  #   puts "Holding message"
-  #   get_move
-  # end
 
   include Check
   include Move

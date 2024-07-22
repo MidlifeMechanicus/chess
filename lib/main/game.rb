@@ -46,16 +46,8 @@ class Game
     board[7][7] = Rook.new("black", [7, 7])
   end
 
-  def play_game(white_player, black_player)
-    until game_over == true
-      white_player.move_piece(self)
-      break if game_over == true
-
-      black_player.move_piece(self)
-      break if game_over == true
-
-      # refactor to use current_player
-    end
+  def play_game
+    current_player.move_piece(self) until game_over == true
   end
 
   def show_instructions

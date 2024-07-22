@@ -35,6 +35,8 @@ module Check
         next unless piece_valid(game, [i, j]) == true
 
         square.possible_moves(game).each do |move|
+          next unless square.check_ally_occupied(game, move) == false
+
           working_copy = Marshal.load(Marshal.dump(game))
           # It is well accepted that Ruby is a pass-by-value, high level programming language.
           # Unfortunately, this is slightly incorrect,
@@ -47,10 +49,11 @@ module Check
           # This is similar to the mastermind project where we had to use #dup to create a 'safe' working copy.
           # That does not work with more complex objects, however. We must instead serialise and load the object as done above.
           make_move(working_copy, [i, j, move[0], move[1]])
-          if check_check(working_copy) == false
-            checkmate = false
-            break
-          end
+          next unless check_check(working_copy) == false
+
+          p [i, j, move[0], move[1]]
+          checkmate = false
+          break
         end
       end
     end
