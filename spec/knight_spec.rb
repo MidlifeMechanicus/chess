@@ -15,16 +15,16 @@ describe Knight do
         expect(knight.display).to eq("\e[38;2;255;255;255m♞\e[0m")
       end
       it "should have a move matrix" do
-        expect(knight.matrix).to eq([[1, 2], [2, 1], [2, -1], [1, -2], [-1, -2], [-2, -1], [-2, 1], [1, -2]])
+        expect(knight.matrix).to eq([[1, 2], [2, 1], [2, -1], [1, -2], [-1, -2], [-2, -1], [-2, 1], [-1, 2]])
       end
     end
   end
   describe "#possible_moves" do
     game = Game.new
     test_piece = Knight.new("white", [1, 0])
-    game.board[0][0] = test_piece
+    game.board[1][0] = test_piece
     it "should calculate possible moves" do
-      expect(test_piece.possible_moves(game)).to eq([[2, 2], [3, 1]])
+      expect(test_piece.possible_moves(game)).to eq([[2, 2], [3, 1], [0, 2]])
     end
   end
 end
