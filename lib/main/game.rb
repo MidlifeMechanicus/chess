@@ -2,10 +2,12 @@
 require_relative "game/show_board"
 
 class Game
-  attr_accessor :board, :game_over
+  attr_accessor :board, :current_player, :next_player, :game_over
 
   def initialize
     @board = Array.new(8) { Array.new(8) }
+    @current_player = ""
+    @next_player = ""
     @game_over = false
   end
 

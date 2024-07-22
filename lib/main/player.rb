@@ -63,6 +63,7 @@ class Player
       end
     end
     make_move(game, move)
+    game.current_player, game.next_player = game.next_player, game.current_player
     game.show_board
   end
 
