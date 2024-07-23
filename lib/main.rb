@@ -37,20 +37,19 @@ def load_game
 end
 
 # Still to be implemented:
-# Castling
 # En passant
 # Review, refactor, rspec all
 
 # GENERAL TESTING
 
-# game = Game.new
-# game.set_board
-# white_player = Player.new("white")
-# black_player = Player.new("black")
-# game.current_player = white_player
-# game.next_player = black_player
+game = Game.new
+game.set_board
+white_player = Player.new("white")
+black_player = Player.new("black")
+game.current_player = white_player
+game.next_player = black_player
 
-# game.play_game
+game.play_game
 
 # SAVE TESTING
 
@@ -71,16 +70,17 @@ end
 
 # DEBUGGING
 
-game = Game.new
-white_player = Player.new("white")
-black_player = Player.new("black")
-game.current_player = white_player
-game.next_player = black_player
-game.board[4][0] = King.new("white", [4, 0])
-game.board[4][7] = King.new("black", [4, 7])
-game.board[0][0] = Rook.new("white", [0, 0])
-game.board[7][7] = Rook.new("black", [7, 7])
-game.play_game
+# game = Game.new
+# white_player = Player.new("white")
+# black_player = Player.new("black")
+# game.current_player = white_player
+# game.next_player = black_player
+# game.board[4][0] = King.new("white", [4, 0])
+# game.board[4][7] = King.new("black", [4, 7])
+# game.board[0][0] = Rook.new("white", [0, 0])
+# game.board[7][7] = Rook.new("black", [7, 7])
+# game.play_game
+
 # game.board[6][1] = Pawn.new("white", [6, 1])
 # game.board[7][0] = Queen.new("black", [7, 0])
 # game.board[7][4] = Rook.new("black", [7, 4])

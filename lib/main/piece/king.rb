@@ -16,7 +16,7 @@ class King < Piece
     current_matrix = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]]
     if color == "black" && game.current_player.color == "black"
       current_matrix << [-2, 0] if has_moved == false &&
-      !game.board[0][7].nil? &&
+                                   !game.board[0][7].nil? &&
                                    game.board[0][7].has_moved == false &&
                                    game.board[1][7].nil? &&
                                    game.board[2][7].nil? &&
@@ -26,7 +26,7 @@ class King < Piece
                                    game.current_player.check_check(game, [3, 7]) == false
       # Castle Queenside
       current_matrix << [2, 0] if has_moved == false &&
-      !game.board[7][7].nil? &&
+                                  !game.board[7][7].nil? &&
                                   game.board[7][7].has_moved == false &&
                                   game.board[5][7].nil? &&
                                   game.board[6][7].nil? &&
@@ -36,7 +36,7 @@ class King < Piece
       # Castle Kingside
     elsif color == "white" && game.current_player.color == "white"
       current_matrix << [-2, 0] if has_moved == false &&
-      !game.board[0][0].nil? &&
+                                   !game.board[0][0].nil? &&
                                    game.board[0][0].has_moved == false &&
                                    game.board[1][0].nil? &&
                                    game.board[2][0].nil? &&
@@ -46,7 +46,7 @@ class King < Piece
                                    game.current_player.check_check(game, [3, 0]) == false
       # Castle Queenside
       current_matrix << [2, 0] if has_moved == false &&
-      !game.board[7][0].nil? &&
+                                  !game.board[7][0].nil? &&
                                   game.board[7][0].has_moved == false &&
                                   game.board[5][0].nil? &&
                                   game.board[6][0].nil? &&

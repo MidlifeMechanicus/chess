@@ -37,6 +37,8 @@ class Player
       puts "It is Player #{name}'s move."
     end
 
+    clear_en_passant(game)
+
     move_accepted = false
 
     until move_accepted == true || game.game_over == true
@@ -67,6 +69,7 @@ class Player
 
     make_move(game, move)
     check_castle(game, move)
+    check_en_passant(game, move)
     check_promotion(game)
     game.current_player, game.next_player = game.next_player, game.current_player
     game.show_board
@@ -78,6 +81,38 @@ class Player
         next unless square.class == Pawn && square.color == color
 
         square.promote(game)
+      end
+    end
+  end
+
+  def check_en_passant(game, move)
+    if game.board[move[2]][move[3]].instance_of?(Pawn) 
+      if move[0] - move[2] == 0 &&
+        move[1] - move[3] == (2).abs
+        game.board[move[2]][move[3]].en_passant = true
+        # Marks pawn as en passant
+      elsif game.board[move[2]][move[3]].color == "black" &&
+        game.board[move[2]][move[3] +1 ].instance_of?(Pawn) &&
+        game.board[move[2]][move[3] +1 ].color != color &&
+        game.board[move[2]][move[3] +1 ].en_passant == true
+        game.board[move[2]][move[3] +1 ] = nil
+        # Removes white pawns taken en passant
+      elsif game.board[move[2]][move[3]].color == "white" &&
+        game.board[move[2]][move[3] -1 ].instance_of?(Pawn) &&
+        game.board[move[2]][move[3] -1 ].color != color &&
+        game.board[move[2]][move[3] -1 ].en_passant == true
+        game.board[move[2]][move[3] -1 ] = nil
+        # Removes black pawns taken en passant
+      end
+    end
+  end
+
+  def clear_en_passant(game)
+    game.board.each.with_index do |column, _i|
+      column.each.with_index do |square, _j|
+        next unless square.class == Pawn && square.color == color
+
+        square.en_passant = false
       end
     end
   end
@@ -109,6 +144,3 @@ class Player
   include Check
   include Move
 end
-
-# need get_help 'start-column-letter start-row-number end-column-letter end-column-number', with no spaces. /n
-# For example: 'b1c3' would be a valid starting move for the white queens-knight."
