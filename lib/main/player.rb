@@ -38,12 +38,11 @@ class Player
     end
 
     move_accepted = false
-    chosen_piece = nil
 
     until move_accepted == true || game.game_over == true
       game.show_board
       move = get_move(game)
-      break if game.game_over == true
+      break if game.game_over == true || move.nil?
 
       move = filter_move_string(move)
       # This line converts from conventional chess notation to array coordinates.
@@ -63,6 +62,7 @@ class Player
         end
       end
     end
+    game.game_over = true if move.nil?
     return if game.game_over == true
 
     make_move(game, move)

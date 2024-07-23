@@ -31,37 +31,18 @@ board:
   - 
   - 
   - 
-  - !ruby/object:Knight
-    position:
-    - 0
-    - 5
-    color: black
-    display: "\e[38;2;255;0;0m♞\e[0m"
-    matrix:
-    - - 1
-      - 2
-    - - 2
-      - 1
-    - - 2
-      - -1
-    - - 1
-      - -2
-    - - -1
-      - -2
-    - - -2
-      - -1
-    - - -2
-      - 1
-    - - -1
-      - 2
-    has_moved: true
+  - 
   - !ruby/object:Pawn
     position:
     - 0
     - 6
     color: black
     display: "\e[38;2;255;0;0m♙\e[0m"
-    matrix: []
+    matrix:
+    - - 0
+      - -1
+    - - 0
+      - -2
     has_moved: false
   - !ruby/object:Rook
     position:
@@ -79,25 +60,10 @@ board:
     - - -1
       - 0
     has_moved: false
-- - 
-  - !ruby/object:Pawn
+- - !ruby/object:Knight
     position:
     - 1
-    - 1
-    color: white
-    display: "\e[38;2;255;255;255m♙\e[0m"
-    matrix:
-    - - 0
-      - 1
-    - - 0
-      - 2
-    has_moved: false
-  - 
-  - 
-  - !ruby/object:Knight
-    position:
-    - 1
-    - 4
+    - 0
     color: white
     display: "\e[38;2;255;255;255m♞\e[0m"
     matrix:
@@ -117,10 +83,59 @@ board:
       - 1
     - - -1
       - 2
-    has_moved: true
+    has_moved: false
+  - !ruby/object:Pawn
+    position:
+    - 1
+    - 1
+    color: white
+    display: "\e[38;2;255;255;255m♙\e[0m"
+    matrix:
+    - - 0
+      - 1
+    - - 0
+      - 2
+    has_moved: false
   - 
   - 
   - 
+  - 
+  - !ruby/object:Pawn
+    position:
+    - 1
+    - 6
+    color: black
+    display: "\e[38;2;255;0;0m♙\e[0m"
+    matrix:
+    - - 0
+      - -1
+    - - 0
+      - -2
+    has_moved: false
+  - !ruby/object:Knight
+    position:
+    - 1
+    - 7
+    color: black
+    display: "\e[38;2;255;0;0m♞\e[0m"
+    matrix:
+    - - 1
+      - 2
+    - - 2
+      - 1
+    - - 2
+      - -1
+    - - 1
+      - -2
+    - - -1
+      - -2
+    - - -2
+      - -1
+    - - -2
+      - 1
+    - - -1
+      - 2
+    has_moved: false
 - - !ruby/object:Bishop
     position:
     - 2
@@ -205,19 +220,17 @@ board:
     - - -1
       - 1
     has_moved: false
+  - 
   - !ruby/object:Pawn
     position:
     - 3
-    - 1
+    - 2
     color: white
     display: "\e[38;2;255;255;255m♙\e[0m"
     matrix:
     - - 0
       - 1
-    - - 0
-      - 2
-    has_moved: false
-  - 
+    has_moved: true
   - 
   - 
   - 
@@ -281,17 +294,19 @@ board:
     - - -1
       - 1
     has_moved: false
-  - 
   - !ruby/object:Pawn
     position:
     - 4
-    - 2
+    - 1
     color: white
     display: "\e[38;2;255;255;255m♙\e[0m"
     matrix:
     - - 0
       - 1
-    has_moved: true
+    - - 0
+      - 2
+    has_moved: false
+  - 
   - 
   - 
   - 
@@ -331,7 +346,22 @@ board:
     - - -1
       - 1
     has_moved: false
-- - 
+- - !ruby/object:Bishop
+    position:
+    - 5
+    - 0
+    color: white
+    display: "\e[38;2;255;255;255m♝\e[0m"
+    matrix:
+    - - 1
+      - 1
+    - - 1
+      - -1
+    - - -1
+      - -1
+    - - -1
+      - 1
+    has_moved: false
   - !ruby/object:Pawn
     position:
     - 5
@@ -412,18 +442,20 @@ board:
     has_moved: false
   - 
   - 
+  - 
+  - 
   - !ruby/object:Pawn
     position:
     - 6
-    - 4
+    - 6
     color: black
     display: "\e[38;2;255;0;0m♙\e[0m"
     matrix:
     - - 0
       - -1
-    has_moved: true
-  - 
-  - 
+    - - 0
+      - -2
+    has_moved: false
   - !ruby/object:Knight
     position:
     - 6
@@ -478,22 +510,7 @@ board:
     has_moved: false
   - 
   - 
-  - !ruby/object:Bishop
-    position:
-    - 7
-    - 4
-    color: white
-    display: "\e[38;2;255;255;255m♝\e[0m"
-    matrix:
-    - - 1
-      - 1
-    - - 1
-      - -1
-    - - -1
-      - -1
-    - - -1
-      - 1
-    has_moved: true
+  - 
   - 
   - !ruby/object:Pawn
     position:
@@ -504,6 +521,8 @@ board:
     matrix:
     - - 0
       - -1
+    - - 0
+      - -2
     has_moved: false
   - !ruby/object:Rook
     position:
@@ -522,11 +541,11 @@ board:
       - 0
     has_moved: false
 current_player: !ruby/object:Player
-  color: black
-  name: Black
-  currently_in_check: false
-next_player: !ruby/object:Player
   color: white
   name: White
+  currently_in_check: false
+next_player: !ruby/object:Player
+  color: black
+  name: Black
   currently_in_check: false
 game_over: false
