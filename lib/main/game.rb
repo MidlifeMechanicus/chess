@@ -70,6 +70,15 @@ class Game
     current_player.get_move(self)
   end
 
+  def end_game(method)
+    @game_over = true
+    if method == "resign"
+      puts "Player #{current_player.name} has resigned. The game is over."
+    else
+      puts "Player #{current_player.name} has ended the game without conclusion."
+    end
+  end
+
   include ShowBoard
 end
 

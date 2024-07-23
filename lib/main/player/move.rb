@@ -11,6 +11,10 @@ module Move
       game.save_game
     when "load"
       load_game
+    when "quit"
+      game.end_game("quit")
+    when "resign"
+      game.end_game("resign")
     else
       move
     end

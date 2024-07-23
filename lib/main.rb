@@ -38,17 +38,20 @@ end
 # En passant
 # Promotion
 # Resign
+# Check for saved game before loading
+# Check game endings on loaded games
+# Review, refactor, rspec all
 
 # GENERAL TESTING
 
-# game = Game.new
-# game.set_board
-# white_player = Player.new("white")
-# black_player = Player.new("black")
-# game.current_player = white_player
-# game.next_player = black_player
+game = Game.new
+game.set_board
+white_player = Player.new("white")
+black_player = Player.new("black")
+game.current_player = white_player
+game.next_player = black_player
 
-# game.play_game
+game.play_game
 
 # SAVE TESTING
 
@@ -69,20 +72,20 @@ end
 
 # DEBUGGING
 
-game = Game.new
-white_player = Player.new("white")
-black_player = Player.new("black")
-game.board[6][0] = King.new("white", [6, 0])
-game.board[4][7] = King.new("black", [4, 7])
-game.board[5][0] = Rook.new("white", [5, 0])
-game.board[5][1] = Pawn.new("white", [5, 1])
-game.board[6][1] = Pawn.new("white", [6, 1])
-game.board[7][0] = Queen.new("black", [7, 0])
-game.board[7][4] = Rook.new("black", [7, 4])
+# game = Game.new
+# white_player = Player.new("white")
+# black_player = Player.new("black")
+# game.board[6][0] = King.new("white", [6, 0])
+# game.board[4][7] = King.new("black", [4, 7])
+# game.board[5][0] = Rook.new("white", [5, 0])
+# game.board[5][1] = Pawn.new("white", [5, 1])
+# game.board[6][1] = Pawn.new("white", [6, 1])
+# game.board[7][0] = Queen.new("black", [7, 0])
+# game.board[7][4] = Rook.new("black", [7, 4])
 
-game.show_board
+# game.show_board
 
-p white_player.check_mate(game)
+# p white_player.check_mate(game)
 
 # test this game
 

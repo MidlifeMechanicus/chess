@@ -40,13 +40,13 @@ class Player
     move_accepted = false
     chosen_piece = nil
 
-    until move_accepted == true
+    until move_accepted == true || game.game_over == true
       game.show_board
       move = get_move(game)
+      break if game.game_over == true
+
       move = filter_move_string(move)
       # This line converts from conventional chess notation to array coordinates.
-
-      # Implement break for game over if loading saved games proves an issue.
       if move.length != 4
         puts "That command was not understood. Please try again."
       elsif piece_valid(game, move) != true
@@ -63,6 +63,8 @@ class Player
         end
       end
     end
+    return if game.game_over == true
+
     make_move(game, move)
     game.current_player, game.next_player = game.next_player, game.current_player
     game.show_board

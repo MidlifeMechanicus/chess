@@ -53,7 +53,6 @@ describe Player do
         game.board[6][1] = Pawn.new("white", [6, 1])
         game.board[7][0] = Queen.new("black", [7, 0])
         game.board[7][4] = Rook.new("black", [7, 4])
-        p game
         expect(white_player.check_mate(game)).to be true
         expect(black_player.check_mate(game)).to be false
       end

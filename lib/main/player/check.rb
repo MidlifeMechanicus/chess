@@ -51,7 +51,6 @@ module Check
           make_move(working_copy, [i, j, move[0], move[1]])
           next unless check_check(working_copy) == false
 
-          p [i, j, move[0], move[1]]
           checkmate = false
           break
         end
