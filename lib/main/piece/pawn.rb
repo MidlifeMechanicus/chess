@@ -79,5 +79,32 @@ class Pawn < Piece
       [position[0] + m[0], position[1] + m[1]]
     end
   end
-  # Need promote method.
+
+  def promote(game)
+    return unless (color == "black" && position[1] == 0) ||
+                  (color == "white" && position[1] == 7)
+
+    choice_valid = false
+    until choice_valid == true
+      puts "Your pawn can be promoted to a queen, bishop, knight, or rook. Which do you choose?"
+      choice = gets.chomp.downcase
+      case choice
+      when "queen"
+        choice_valid = true
+        game.board[position[0]][position[1]] = Queen.new(color, position)
+      when "bishop"
+        choice_valid = true
+        game.board[position[0]][position[1]] = Bishop.new(color, position)
+      when "knight"
+        choice_valid = true
+        game.board[position[0]][position[1]] = Knight.new(color, position)
+      when "rook"
+        choice_valid = true
+        game.board[position[0]][position[1]] = Rook.new(color, position)
+      else
+        puts "That is not a valid choice. Please try again."
+      end
+
+    end
+  end
 end

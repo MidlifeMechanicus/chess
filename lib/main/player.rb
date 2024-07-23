@@ -66,8 +66,19 @@ class Player
     return if game.game_over == true
 
     make_move(game, move)
+    check_promotion(game)
     game.current_player, game.next_player = game.next_player, game.current_player
     game.show_board
+  end
+
+  def check_promotion(game)
+    game.board.each.with_index do |column, i|
+      column.each.with_index do |square, j|
+        next unless square.class == Pawn && square.color == color
+
+        square.promote(game)
+      end
+    end
   end
 
   include Check
