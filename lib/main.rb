@@ -39,7 +39,6 @@ end
 # Still to be implemented:
 # Castling
 # En passant
-# Promotion
 # Review, refactor, rspec all
 
 # GENERAL TESTING
@@ -77,10 +76,10 @@ white_player = Player.new("white")
 black_player = Player.new("black")
 game.current_player = white_player
 game.next_player = black_player
-game.board[6][0] = King.new("white", [6, 0])
+game.board[4][0] = King.new("white", [4, 0])
 game.board[4][7] = King.new("black", [4, 7])
-game.board[5][0] = Rook.new("white", [5, 0])
-game.board[5][6] = Pawn.new("white", [5, 6])
+game.board[0][0] = Rook.new("white", [0, 0])
+game.board[7][7] = Rook.new("black", [7, 7])
 game.play_game
 # game.board[6][1] = Pawn.new("white", [6, 1])
 # game.board[7][0] = Queen.new("black", [7, 0])

@@ -66,18 +66,43 @@ class Player
     return if game.game_over == true
 
     make_move(game, move)
+    check_castle(game, move)
     check_promotion(game)
     game.current_player, game.next_player = game.next_player, game.current_player
     game.show_board
   end
 
   def check_promotion(game)
-    game.board.each.with_index do |column, i|
-      column.each.with_index do |square, j|
+    game.board.each.with_index do |column, _i|
+      column.each.with_index do |square, _j|
         next unless square.class == Pawn && square.color == color
 
         square.promote(game)
       end
+    end
+  end
+
+  def check_castle(game, move)
+    if move == [4, 7, 2, 7] && game.board[2][7].instance_of?(King)
+      game.board[3][7] = game.board[0][7]
+      game.board[3][7].has_moved = true
+      game.board[0][7] = nil
+      # Black castle Queenside
+    elsif move == [4, 7, 6, 7] && game.board[6][7].instance_of?(King)
+      game.board[5][7] = game.board[7][7]
+      game.board[5][7].has_moved = true
+      game.board[7][7] = nil
+      # Black castle Kingside
+    elsif move == [4, 0, 2, 0] && game.board[2][0].instance_of?(King)
+      game.board[3][0] = game.board[0][0]
+      game.board[3][0].has_moved = true
+      game.board[0][0] = nil
+    # White castle Queenside
+    elsif move == [4, 0, 6, 0] && game.board[6][0].instance_of?(King)
+      game.board[5][0] = game.board[7][0]
+      game.board[5][0].has_moved = true
+      game.board[7][0] = nil
+      # White castle Kingside
     end
   end
 
