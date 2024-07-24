@@ -4,18 +4,23 @@ require "./lib/main/piece/bishop"
 describe Bishop do
   describe "#initialize" do
     context "a new piece has been created" do
-      bishop = Bishop.new("black", [2, 7])
+      white_bishop = Bishop.new("white", [2, 0])
+      black_bishop = Bishop.new("black", [2, 7])
       it "should have a position" do
-        expect(bishop.position).to eq([2, 7])
+        expect(white_bishop.position).to eq([2, 0])
+        expect(black_bishop.position).to eq([2, 7])
       end
       it "should have a color" do
-        expect(bishop.color).to eq("black")
+        expect(white_bishop.color).to eq("white")
+        expect(black_bishop.color).to eq("black")
       end
       it "should have a display" do
-        expect(bishop.display).to eq("\e[38;2;255;0;0m♝\e[0m")
+        expect(white_bishop.display).to eq("\e[38;2;255;255;255m♝\e[0m")
+        expect(black_bishop.display).to eq("\e[38;2;255;0;0m♝\e[0m")
       end
       it "should have a move matrix" do
-        expect(bishop.matrix).to eq([[1, 1], [1, -1], [-1, -1], [-1, 1]])
+        expect(white_bishop.matrix).to eq([[1, 1], [1, -1], [-1, -1], [-1, 1]])
+        expect(black_bishop.matrix).to eq([[1, 1], [1, -1], [-1, -1], [-1, 1]])
       end
     end
   end

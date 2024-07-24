@@ -1,6 +1,6 @@
-# Creates a King piece.
 require_relative "../piece"
 
+# Creates a King piece.
 class King < Piece
   def initialize(color, coordinates)
     super
@@ -14,6 +14,9 @@ class King < Piece
 
   def set_matrix(game)
     current_matrix = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]]
+    # This function does not check for the King's position, or that allied piece in the Rook's position is a Rook.
+    # In a standard game, this is unnecessary, thanks to the 'has_moved == false' condition.
+    # However, this could become an issue if custom games with atypical starting positions were implemented.
     if color == "black" && game.current_player.color == "black"
       current_matrix << [-2, 0] if has_moved == false &&
                                    !game.board[0][7].nil? &&

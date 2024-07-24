@@ -24,6 +24,10 @@ describe Pawn do
       end
     end
   end
+
+  describe "#set_matrix" do
+    # Need stuff.
+  end
   describe "#possible_moves" do
     game = Game.new
     test_piece = Pawn.new("white", [3, 1])
@@ -49,5 +53,10 @@ describe Pawn do
       game.board[3][2] = Pawn.new("black", [3, 2])
       expect(test_piece.possible_moves(game)).to eq([])
     end
+    # Expand to include en passant.
+  end
+
+  describe "#promote" do
+    # Need stuff.
   end
 end

@@ -3,7 +3,7 @@ require_relative "../piece"
 
 class Pawn < Piece
   attr_accessor :en_passant
-  
+
   def initialize(color, coordinates)
     super
     @matrix = []
@@ -45,23 +45,23 @@ class Pawn < Piece
         current_matrix << [1, -1]
       end
       # Capture moves only available if enemy piece in relevant square.
-      if(column - 1).between?(0, 7) &&
-        (row - 1).between?(0, 7) &&
+      if (column - 1).between?(0, 7) &&
+         (row - 1).between?(0, 7) &&
          !game.board[column - 1][row].nil? &&
          game.board[column - 1][row].instance_of?(Pawn) &&
          game.board[column - 1][row].en_passant == true
-         game.board[column - 1][row].color == "white" 
+        game.board[column - 1][row].color == "white"
         current_matrix << [-1, -1]
       end
       if (column + 1).between?(0, 7) &&
-        (row - 1).between?(0, 7) &&
-        !game.board[column + 1][row].nil? &&
-        game.board[column + 1][row].instance_of?(Pawn) &&
-        game.board[column + 1][row].en_passant == true
+         (row - 1).between?(0, 7) &&
+         !game.board[column + 1][row].nil? &&
+         game.board[column + 1][row].instance_of?(Pawn) &&
+         game.board[column + 1][row].en_passant == true
         game.board[column + 1][row].color == "white"
-       current_matrix << [1, -1]
-     end
-     # En passant moves only available if horizontally adjacent enemy pawn moved two spaces last turn.
+        current_matrix << [1, -1]
+      end
+    # En passant moves only available if horizontally adjacent enemy pawn moved two spaces last turn.
     elsif color == "white"
       if (row + 1).between?(0, 7) &&
          game.board[position[0]][position[1] + 1].nil?
@@ -88,22 +88,22 @@ class Pawn < Piece
       end
       # Capture moves only available if enemy piece in relevant square.
       if (column - 1).between?(0, 7) &&
-        (row + 1).between?(0, 7) &&
-        !game.board[column - 1][row].nil? &&
-        game.board[column - 1][row].instance_of?(Pawn) &&
-        game.board[column - 1][row].en_passant == true
+         (row + 1).between?(0, 7) &&
+         !game.board[column - 1][row].nil? &&
+         game.board[column - 1][row].instance_of?(Pawn) &&
+         game.board[column - 1][row].en_passant == true
         game.board[column - 1][row].color == "black"
-       current_matrix << [-1, 1]
-     end
-     if (column + 1).between?(0, 7) &&
-        (row + 1).between?(0, 7) &&
-        !game.board[column + 1][row].nil? &&
-        game.board[column + 1][row].instance_of?(Pawn)
+        current_matrix << [-1, 1]
+      end
+      if (column + 1).between?(0, 7) &&
+         (row + 1).between?(0, 7) &&
+         !game.board[column + 1][row].nil? &&
+         game.board[column + 1][row].instance_of?(Pawn)
         game.board[column + 1][row].en_passant == true
         game.board[column + 1][row].color == "black"
-       current_matrix << [1, 1]
-     end
-     # En passant moves only available if horizontally adjacent enemy pawn moved two spaces last turn.
+        current_matrix << [1, 1]
+      end
+      # En passant moves only available if horizontally adjacent enemy pawn moved two spaces last turn.
     end
     @matrix = current_matrix
   end

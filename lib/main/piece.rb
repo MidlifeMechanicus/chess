@@ -1,6 +1,6 @@
-# Creates chess pieces.
 require "./lib/main/game"
 
+# Creates chess pieces.
 class Piece
   attr_accessor :position, :color, :display, :matrix, :has_moved
 
@@ -28,22 +28,21 @@ class Piece
 
   def move_vector(game, vector, square = position)
     square = [square[0] + vector[0], square[1] + vector[1]]
-    return [square] if !square[0].between?(0, 7) || !square[1].between?(0, 7) || !game.board[square[0]][square[1]].nil?
+    return [square] if !square[0].between?(0, 7) ||
+                       !square[1].between?(0, 7) ||
+                       !game.board[square[0]][square[1]].nil?
 
     [square] + move_vector(game, vector, square)
   end
 
   def check_ally_occupied(game, location)
-    if game.board[location[0]][location[1]].nil? ||
-       (game.board[location[0]][location[1]].color != color)
-      false
-    else
-      true
-    end
+    !(game.board[location[0]][location[1]].nil? ||
+       (game.board[location[0]][location[1]].color != color))
   end
 
   def check_move_valid(game, move)
-    if possible_moves(game).include?(move) && !check_ally_occupied(game, move)
+    if possible_moves(game).include?(move) &&
+       !check_ally_occupied(game, move)
       true
     else
       false

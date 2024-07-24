@@ -56,9 +56,9 @@ describe Piece do
     end
   end
 
-  context "a new game has been created" do
-    game = Game.new
-    describe "#check_move_valid" do
+  describe "#check_move_valid" do
+    context "a new game has been created" do
+      game = Game.new
       test_piece = Piece.new("black", [1, 1])
       game.board[1][1] = test_piece
       it "should recognize a valid move" do

@@ -4,17 +4,22 @@ require "./lib/main/piece/queen"
 describe Queen do
   describe "#initialize" do
     context "a new piece has been created" do
+      white_queen = Queen.new("white", [3, 0])
       black_queen = Queen.new("black", [3, 7])
       it "should have a position" do
+        expect(white_queen.position).to eq([3, 0])
         expect(black_queen.position).to eq([3, 7])
       end
       it "should have a color" do
+        expect(white_queen.color).to eq("white")
         expect(black_queen.color).to eq("black")
       end
       it "should have a display" do
+        expect(white_queen.display).to eq("\e[38;2;255;255;255m♛\e[0m")
         expect(black_queen.display).to eq("\e[38;2;255;0;0m♛\e[0m")
       end
       it "should have a move matrix" do
+        expect(white_queen.matrix).to eq([[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]])
         expect(black_queen.matrix).to eq([[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]])
       end
     end
