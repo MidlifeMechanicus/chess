@@ -140,7 +140,7 @@ class Pawn < Piece
       else
         puts "That is not a valid choice. Please try again."
       end
-
     end
+    choice_valid
   end
 end

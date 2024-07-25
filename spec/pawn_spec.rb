@@ -1,5 +1,9 @@
 # Tests behaviour of Pawns.
 require "./lib/main/piece/pawn"
+require "./lib/main/piece/queen"
+require "./lib/main/piece/bishop"
+require "./lib/main/piece/knight"
+require "./lib/main/piece/rook"
 
 describe Pawn do
   describe "#initialize" do
@@ -197,6 +201,75 @@ describe Pawn do
   end
 
   describe "#promote" do
-    # Need stuff.
+    context "a new game with a black pawn and a white pawn" do
+      game = Game.new
+      it "should not promote pawns not at final rank" do
+        game.board[0][1] = Pawn.new("white", [0, 1])
+        game.board[7][6] = Pawn.new("black", [7, 6])
+        white_pawn = game.board[0][1]
+        black_pawn = game.board[7][6]
+        expect(white_pawn.promote(game)).to be nil
+        expect(black_pawn.promote(game)).to be nil
+      end
+      it "should promote final rank pawns to queens when it gets 'queen'" do
+        game.board[0][7] = Pawn.new("white", [0, 7])
+        game.board[7][0] = Pawn.new("black", [7, 0])
+        white_pawn = game.board[0][7]
+        black_pawn = game.board[7][0]
+        allow(white_pawn).to receive(:gets).and_return("queen")
+        allow(black_pawn).to receive(:gets).and_return("queen")
+        white_pawn.promote(game)
+        black_pawn.promote(game)
+        expect(game.board[0][7].class).to eq(Queen)
+        expect(game.board[0][7].color).to eq("white")
+        expect(game.board[7][0].class).to eq(Queen)
+        expect(game.board[7][0].color).to eq("black")
+      end
+      it "should promote final rank pawns to bishops when it gets 'bishop'" do
+        game.board[0][7] = Pawn.new("white", [0, 7])
+        game.board[7][0] = Pawn.new("black", [7, 0])
+        white_pawn = game.board[0][7]
+        black_pawn = game.board[7][0]
+        allow(white_pawn).to receive(:gets).and_return("bishop")
+        allow(black_pawn).to receive(:gets).and_return("bishop")
+        white_pawn.promote(game)
+        black_pawn.promote(game)
+        expect(game.board[0][7].class).to eq(Bishop)
+        expect(game.board[0][7].color).to eq("white")
+        expect(game.board[7][0].class).to eq(Bishop)
+        expect(game.board[7][0].color).to eq("black")
+      end
+      it "should promote final rank pawns to queens when it gets 'knight'" do
+        game.board[0][7] = Pawn.new("white", [0, 7])
+        game.board[7][0] = Pawn.new("black", [7, 0])
+        white_pawn = game.board[0][7]
+        black_pawn = game.board[7][0]
+        allow(white_pawn).to receive(:gets).and_return("knight")
+        allow(black_pawn).to receive(:gets).and_return("knight")
+        white_pawn.promote(game)
+        black_pawn.promote(game)
+        expect(game.board[0][7].class).to eq(Knight)
+        expect(game.board[0][7].color).to eq("white")
+        expect(game.board[7][0].class).to eq(Knight)
+        expect(game.board[7][0].color).to eq("black")
+      end
+      it "should promote final rank pawns to queens when it gets 'rook'" do
+        game.board[0][7] = Pawn.new("white", [0, 7])
+        game.board[7][0] = Pawn.new("black", [7, 0])
+        white_pawn = game.board[0][7]
+        black_pawn = game.board[7][0]
+        allow(white_pawn).to receive(:gets).and_return("rook")
+        allow(black_pawn).to receive(:gets).and_return("rook")
+        white_pawn.promote(game)
+        black_pawn.promote(game)
+        expect(game.board[0][7].class).to eq(Rook)
+        expect(game.board[0][7].color).to eq("white")
+        expect(game.board[7][0].class).to eq(Rook)
+        expect(game.board[7][0].color).to eq("black")
+      end
+    end
   end
 end
+
+# game.board[0][0] = Pawn.new("black", [0,0])
+#       game.board[0][0] = Pawn.new("black", [0,0])
