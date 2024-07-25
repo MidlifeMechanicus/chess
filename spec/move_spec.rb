@@ -3,23 +3,39 @@ require "./lib/main/player"
 
 describe Player do
   describe "#get_move" do
+    game = Game.new
     player = Player.new("black")
-    it "should call #show_instructions on getting 'help'" do
-      allow(player).to receive(:gets).and_return("help")
-      expect(player).to receive(:show_instructions)
-      player.get_move
-    end
     it "should return downcase letters" do
       allow(player).to receive(:gets).and_return("Ab")
-      expect(player.get_move).to eq("ab")
+      expect(player.get_move(game)).to eq("ab")
     end
-    # xit "should call #check_move otherwise" do
-    #   player = Player.new("black")
-    #   allow(player).to receive(:gets).and_return("test")
-    #   expect(player).to receive(:check_move)
-    #   player.get_move
-    #   # Since refactor, should return move.
+    it "should call #show_instructions on getting 'help'" do
+      allow(player).to receive(:gets).and_return("help")
+      expect(game).to receive(:show_instructions)
+      player.get_move(game)
+    end
+    it "should call #save_game on getting 'save'" do
+      allow(player).to receive(:gets).and_return("save")
+      expect(game).to receive(:save_game)
+      player.get_move(game)
+    end
+    # it "should call #load_game on getting 'load'" do
+    #   allow(player).to receive(:gets).and_return("load")
+    #   is_expected.to receive(:load_game)
+    #   player.get_move(game)
     # end
+    # I can't work out how to test this one because the function being called is not attached to an object.
+    # Have tested manually instead.
+    it "should call #show_instructions on getting 'quit'" do
+      allow(player).to receive(:gets).and_return("quit")
+      expect(game).to receive(:end_game).with("quit")
+      player.get_move(game)
+    end
+    it "should call #show_instructions on getting 'resign'" do
+      allow(player).to receive(:gets).and_return("resign")
+      expect(game).to receive(:end_game).with("resign")
+      player.get_move(game)
+    end
   end
 
   describe "#filter_move_string" do

@@ -11,13 +11,15 @@ describe Player do
       it "should have a name" do
         expect(white_player.name).to eq("White")
       end
-      it "should not be in check" do
-        expect(white_player.currently_in_check).to be false
-      end
     end
   end
 
   describe "#show_instructions" do
     # This is where instructions and save/load commands will be held.
   end
+  # move_piece probably untestable - not unit testing
+  # check promotion
+  # check enpassant
+  # clear en_passant
+  # check castle
 end

@@ -11,12 +11,11 @@ require_relative "player/check"
 require_relative "player/move"
 
 class Player
-  attr_accessor :color, :name, :currently_in_check
+  attr_accessor :color, :name
 
   def initialize(color)
     @color = color
     @name = color.capitalize
-    @currently_in_check = false
   end
 
   def move_piece(game)
@@ -86,24 +85,24 @@ class Player
   end
 
   def check_en_passant(game, move)
-    if game.board[move[2]][move[3]].instance_of?(Pawn) 
-      if move[0] - move[2] == 0 &&
-        move[1] - move[3] == (2).abs
-        game.board[move[2]][move[3]].en_passant = true
-        # Marks pawn as en passant
-      elsif game.board[move[2]][move[3]].color == "black" &&
-        game.board[move[2]][move[3] +1 ].instance_of?(Pawn) &&
-        game.board[move[2]][move[3] +1 ].color != color &&
-        game.board[move[2]][move[3] +1 ].en_passant == true
-        game.board[move[2]][move[3] +1 ] = nil
-        # Removes white pawns taken en passant
-      elsif game.board[move[2]][move[3]].color == "white" &&
-        game.board[move[2]][move[3] -1 ].instance_of?(Pawn) &&
-        game.board[move[2]][move[3] -1 ].color != color &&
-        game.board[move[2]][move[3] -1 ].en_passant == true
-        game.board[move[2]][move[3] -1 ] = nil
-        # Removes black pawns taken en passant
-      end
+    return unless game.board[move[2]][move[3]].instance_of?(Pawn)
+
+    if move[0] - move[2] == 0 &&
+       move[1] - move[3] == 2.abs
+      game.board[move[2]][move[3]].en_passant = true
+      # Marks pawn as en passant
+    elsif game.board[move[2]][move[3]].color == "black" &&
+          game.board[move[2]][move[3] + 1 ].instance_of?(Pawn) &&
+          game.board[move[2]][move[3] + 1 ].color != color &&
+          game.board[move[2]][move[3] + 1 ].en_passant == true
+      game.board[move[2]][move[3] + 1 ] = nil
+      # Removes white pawns taken en passant
+    elsif game.board[move[2]][move[3]].color == "white" &&
+          game.board[move[2]][move[3] - 1 ].instance_of?(Pawn) &&
+          game.board[move[2]][move[3] - 1 ].color != color &&
+          game.board[move[2]][move[3] - 1 ].en_passant == true
+      game.board[move[2]][move[3] - 1 ] = nil
+      # Removes black pawns taken en passant
     end
   end
 

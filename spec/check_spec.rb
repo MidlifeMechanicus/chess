@@ -22,6 +22,8 @@ describe Player do
       game = Game.new
       white_player = Player.new("white")
       black_player = Player.new("black")
+      game.current_player = white_player
+      game.next_player = black_player
       game.board[4][0] = King.new("white", [4, 0])
       game.board[4][7] = King.new("black", [4, 7])
       it "should find neither king in check" do
@@ -41,6 +43,8 @@ describe Player do
       game = Game.new
       white_player = Player.new("white")
       black_player = Player.new("black")
+      game.current_player = white_player
+      game.next_player = black_player
       game.board[6][0] = King.new("white", [6, 0])
       game.board[4][7] = King.new("black", [4, 7])
       it "should find neither king in check" do
