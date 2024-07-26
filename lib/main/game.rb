@@ -66,6 +66,7 @@ class Game
 
   def save_game
     File.write("saved_game.yml", to_yaml)
+    puts "The game has been saved."
     show_board
     current_player.get_move(self)
   end

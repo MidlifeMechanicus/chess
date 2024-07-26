@@ -28,6 +28,7 @@ board:
     - - 0
       - 2
     has_moved: false
+    en_passant: false
   - 
   - 
   - 
@@ -44,6 +45,7 @@ board:
     - - 0
       - -2
     has_moved: false
+    en_passant: false
   - !ruby/object:Rook
     position:
     - 0
@@ -96,6 +98,7 @@ board:
     - - 0
       - 2
     has_moved: false
+    en_passant: false
   - 
   - 
   - 
@@ -112,6 +115,7 @@ board:
     - - 0
       - -2
     has_moved: false
+    en_passant: false
   - !ruby/object:Knight
     position:
     - 1
@@ -164,6 +168,7 @@ board:
     - - 0
       - 2
     has_moved: false
+    en_passant: false
   - 
   - 
   - 
@@ -180,6 +185,7 @@ board:
     - - 0
       - -2
     has_moved: false
+    en_passant: false
   - !ruby/object:Bishop
     position:
     - 2
@@ -220,32 +226,34 @@ board:
     - - -1
       - 1
     has_moved: false
-  - 
   - !ruby/object:Pawn
     position:
     - 3
-    - 2
+    - 1
     color: white
     display: "\e[38;2;255;255;255m♙\e[0m"
     matrix:
     - - 0
       - 1
-    has_moved: true
+    - - 0
+      - 2
+    has_moved: false
+    en_passant: false
   - 
   - 
   - 
   - !ruby/object:Pawn
     position:
     - 3
-    - 6
+    - 5
     color: black
     display: "\e[38;2;255;0;0m♙\e[0m"
     matrix:
     - - 0
       - -1
-    - - 0
-      - -2
-    has_moved: false
+    has_moved: true
+    en_passant: false
+  - 
   - !ruby/object:Queen
     position:
     - 3
@@ -294,19 +302,18 @@ board:
     - - -1
       - 1
     has_moved: false
+  - 
   - !ruby/object:Pawn
     position:
     - 4
-    - 1
+    - 2
     color: white
     display: "\e[38;2;255;255;255m♙\e[0m"
     matrix:
     - - 0
       - 1
-    - - 0
-      - 2
-    has_moved: false
-  - 
+    has_moved: true
+    en_passant: false
   - 
   - 
   - 
@@ -322,6 +329,7 @@ board:
     - - 0
       - -2
     has_moved: false
+    en_passant: false
   - !ruby/object:King
     position:
     - 4
@@ -374,20 +382,24 @@ board:
     - - 0
       - 2
     has_moved: false
+    en_passant: false
+  - 
   - 
   - 
   - 
   - !ruby/object:Pawn
     position:
     - 5
-    - 5
+    - 6
     color: black
     display: "\e[38;2;255;0;0m♙\e[0m"
     matrix:
     - - 0
       - -1
-    has_moved: true
-  - 
+    - - 0
+      - -2
+    has_moved: false
+    en_passant: false
   - !ruby/object:Bishop
     position:
     - 5
@@ -440,6 +452,7 @@ board:
     - - 0
       - 2
     has_moved: false
+    en_passant: false
   - 
   - 
   - 
@@ -456,6 +469,7 @@ board:
     - - 0
       - -2
     has_moved: false
+    en_passant: false
   - !ruby/object:Knight
     position:
     - 6
@@ -508,6 +522,7 @@ board:
     - - 0
       - 2
     has_moved: false
+    en_passant: false
   - 
   - 
   - 
@@ -524,6 +539,7 @@ board:
     - - 0
       - -2
     has_moved: false
+    en_passant: false
   - !ruby/object:Rook
     position:
     - 7
@@ -543,9 +559,7 @@ board:
 current_player: !ruby/object:Player
   color: white
   name: White
-  currently_in_check: false
 next_player: !ruby/object:Player
   color: black
   name: Black
-  currently_in_check: false
 game_over: false

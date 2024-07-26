@@ -77,7 +77,8 @@ class Player
   def check_promotion(game)
     game.board.each.with_index do |column, _i|
       column.each.with_index do |square, _j|
-        next unless square.class == Pawn && square.color == color
+        next unless square.instance_of?(Pawn) &&
+                    square.color == color
 
         square.promote(game)
       end
@@ -88,7 +89,8 @@ class Player
     return unless game.board[move[2]][move[3]].instance_of?(Pawn)
 
     if move[0] - move[2] == 0 &&
-       move[1] - move[3] == 2.abs
+       (move[1] - move[3]).abs == 2
+      puts "got this far!"
       game.board[move[2]][move[3]].en_passant = true
       # Marks pawn as en passant
     elsif game.board[move[2]][move[3]].color == "black" &&
